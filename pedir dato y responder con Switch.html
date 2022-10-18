@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+ <html lange="en">
+     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dia de la semana</title>
+     </head>    
+     
+     <body>
+        <script>
+        dia = window.prompt("Que dia es?").toLocaleLowerCase()
+        switch(dia){
+            case 'lunes':  
+            case 'martes': 
+            case 'miercoles': 
+            case 'jueves':
+            case 'vieres': document.writeln("No es fin de semana")
+                break;
+            case 'sabado':
+            case 'domingo': document.writeln("Es fin de semana")
+             break;
+            default : "Ese dia no existe"
+            break;
+        }
+        </script>
+    </body>
+</html>

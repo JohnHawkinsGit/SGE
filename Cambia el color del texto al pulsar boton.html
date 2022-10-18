@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+ <html lange="en">
+     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ROJO</title>
+     </head>
+     
+     <body>
+         <p id="texto">Introduce tu nombre </p><input type="nombre" id="nombre">
+        <input type="button" value="Pulsar" id="ROJO"> 
+        <select id="colores"> 
+            <option value="Rojo">Rojo</option>
+            <option value="Azul">Azul</option>
+            <option value="Verde">Verde</option>
+            </select>
+        <script>
+            //document.getElementById('ROJO').addEventListener('click',cambiaRojo,false); // --> cambia el texto de arriba a rojo
+            document.getElementById('ROJO').addEventListener('click',cambiarColor,false); // --> cambia el texto por el color de la caja 
+
+           function cambiaRojo(){           
+             document.getElementById('texto').style.color="red"; //--> cambia el color a rojo de arriba a rojo
+             document.getElementById('texto').innerHTML=document.getElementById('nombre').value  // cambia el texto por el de la caja
+            }
+    
+            function cambiarColor(){ // cambia el color del texto al seleccionado
+                document.getElementById('texto').innerHTML=document.getElementById('nombre').value
+    
+                switch(document.getElementById('colores').value){
+                    case 'Rojo': c="red" 
+                    break;
+                    case 'Azul':c="blue"
+                    break;
+                    case 'Verde':c="green"
+                    break;
+                }
+                document.getElementById('texto').style.color=c
+            }
+            
+        </script>
+     </body>
+</html>

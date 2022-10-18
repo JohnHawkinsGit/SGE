@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+ <html lange="en">
+     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>BOMBA</title>
+     </head>   
+     <body>
+        <script>
+          patron=/caca|culo|puta|pollas/
+         
+          cont=0
+          while (cont!=6){
+            texto= window.prompt("texto")
+            texto=texto.toLowerCase()
+            if (patron.test(texto)) {
+                console.log(texto.replace(patron,"****"));            
+            }else {
+            console.log(texto)
+            }
+            cont++
+          } 
+        </script>
+    </body>
+</html>

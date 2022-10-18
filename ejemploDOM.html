@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+ <html lange="en">
+     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>EJEMPLO DOM</title>
+     </head>
+     
+     <body>
+         Introduce tu nombre <input type="text" id="nombre">
+        <input type="button" value="Enviar" id="boton">  
+        
+        <script>
+            //document.getElementById('boton').addEventListener('mouseover',llamar,false);  --> MouseOver  3 parametros:(evento, funcion, boolean)
+            document.getElementById('nombre').addEventListener('blur',llamar,false); // -->blur (perder el foco) 
+            function llamar(){
+            //alert(document.getElementById('nombre').value)
+            document.write(document.getElementById('nombre').value)
+            }
+        </script>
+     </body>
+</html>

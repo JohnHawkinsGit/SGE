@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+ <html lange="en">
+     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cambiar Texto</title>
+     </head>
+     
+     <body>
+         <p id="txt">Texo que cambia </p><input type="text" id="nombre"><br>
+         <input type="checkbox" id="negrita" name="negrita" value="negrita">
+         <label for="negrita"> negrita</label><br>
+         <input type="checkbox" id="cursiva" name="cursiva" value="cursiva">
+         <label for="cursiva"> cursiva</label><br>
+         <input type="checkbox" id="tachado" name="tachado" value="tachado">
+         <label for="tachado"> tachado</label><br>
+         <input type="button" value="cambiar" id=cambiar>
+            
+        <script>
+            document.getElementById('cambiar').addEventListener('click',modificarTexto,false);
+
+            function modificarTexto(){ // cambia el color del texto al seleccionado
+                c= document.getElementById("nombre").value
+                if(document.getElementById("negrita").checked){
+                    document.getElementById("txt").style.fontWeight='bold'
+                }if(document.getElementById("cursiva").checked){
+                    document.getElementById("txt").style.fontStyle='italic'
+                }if(document.getElementById("tachado").checked){
+                    document.getElementById("txt").style.textDecoration='line-through'
+                }else{
+                    document.getElementById("txt").innerHTML =c
+                }
+                
+            }
+        </script>
+     </body>
+</html>

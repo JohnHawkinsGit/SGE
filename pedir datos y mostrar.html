@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+ <html lange="en">
+     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ALUMNO</title>
+     </head>    
+     
+     <body>
+        <script>
+            var dato
+
+            let alumno={nombre:window.prompt("Introduce tu nombre"),apellido:window.prompt("Introduce tu apellido"),edad:window.prompt("¿Cuátos años tienes?"), boletin:nota=pedirNotas()}
+            document.writeln("Nombre: "+alumno.nombre + " Apellido: "+alumno.apellido+" Edad: "+alumno.edad+ " Notas: "+alumno.boletin.toString())
+      
+
+           function pedirNotas(){
+          
+            var asignaturas = {"Android": 0,"SGE": 0,"Empresa":0,"Acceso a datos":0,"Inglés":0, "PSP":0}
+            
+           for (const nombre in asignaturas) {
+           do {
+                nota = parseInt(window.prompt("Introduce una nota para "+nombre))
+                if(nota<0||nota>10){
+                        alert("Introduce una nota correcta")
+                    }else
+                    asignaturas[nombre]=nota
+           }while(num>0||num<10)
+            }
+            
+            for(const media in asignaturas){
+                acum+=asignaturas[media]
+            }   
+            med=acum/6
+            document.writeln("Nota media: "+med)
+            document.writeln(mediaNota(med))
+            return asignaturas
+           }
+            
+       
+        function mediaNota(med){
+            med=0
+            array.forEach(nota => {
+                
+            });
+            if(med>9) v=" SOBRESALIENTE"
+            else if (med>=7&&med<9) v="NOTABLE"
+            else if (med>=5&&med<7) v="APROBADO"
+            else v="SUSPENSO"
+            return v; 
+        }
+        
+            /*
+           var asignaturas = {"Android": 0,"SGE": 0,"Empresa":0,"Acceso a datos":0,"Inglés":0, "PSP":0}
+            
+           for (const nombre in asignaturas) {
+            nota = parseInt(window.prompt("Introduce una nota para "+nombre))
+            asignaturas[nombre]=nota
+            document.writeln(nombre+": " +asignaturas[nombre]+"</br>");  
+            }
+            
+            for(const media in asignaturas){
+                acum+=asignaturas[media]
+            }   
+            med=acum/6
+            document.writeln("Nota media: "+med)
+            document.writeln(mediaNota(med))
+       
+        function mediaNota(med){
+            if(med>9) v=" SOBRESALIENTE"
+            else if (med>=7&&med<9) v="NOTABLE"
+            else if (med>=5&&med<7) v="APROBADO"
+            else v="SUSPENSO"
+            return v; 
+        }
+         */
+        </script>
+    </body>
+</html>

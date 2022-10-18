@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+ <html lange="en">
+     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AÑADIR Y BORRAR</title>
+     </head>
+     
+     <body>
+        <p id="txt"> Introduce tu texto</p>
+         <input type="text" id="nombre">
+        <div id="lista"></div>
+        </br>
+        <input type="radio" name="opciones" id="AddFirst">AddFirst
+        <input type="radio" name="opciones" id="AddLast">AddLast
+        <input type="radio" name="opciones" id="RemoveFirst">RemoveFirst
+        <input type="radio" name="opciones" id="RemoveLast">RemoveLast
+        <input type="radio" name="opciones" id="ReplaceFirst">ReplaceFirst
+        <input type="radio" name="opciones" id="ReplaceLast">ReplaceLast
+        <input type="button" value="Go!" id="boton">
+        
+        <script>
+            document.getElementById('boton').addEventListener('click',hijos,false);
+         
+            function hijos(){
+            var texto=document.getElementById("nombre").value;
+               switch(document.querySelector('input[name="opciones"]:checked').id){
+                  case "AddFirst":
+                     addFirst(texto)
+                  break;
+                  case "AddLast":
+                     addLast(texto)
+                  break;
+                  case "RemoveFirst":   
+                     removeFirst()
+                  break
+                  case "RemoveLast":
+                     removeLast() 
+                  break;   
+                  case "ReplaceFirst":
+                        replaceFirst(texto) 
+                  break;   
+                  case "ReplaceLast":
+                        replaceLast(texto) 
+                  break;   
+              
+                /*const divi = document.createElement('div');
+                const texto = document.createTextNode(document.getElementsByTagName('input')[0].value);
+                divi.appendChild(texto);
+                document.body.appendChild(divi);*/             
+               } 
+               function addFirst(texto){
+                 var item = document.createElement('li');
+                 item.innerHTML=texto
+                 document.getElementById("lista").insertBefore(item,document.getElementById("lista").firstChild)
+
+               }
+
+               function addLast(texto){
+                  var item = document.createElement('li');
+                  item.innerHTML=texto
+                  document.getElementById("lista").appendChild(item,document.getElementById("lista").firstChild)
+               }
+
+               function removeFirst(){
+                  const parrafo= document.createElement('li')
+                  document.getElementById("lista").removeChild(document.getElementById("lista").firstChild)
+               }
+
+               function removeLast(){
+                  const parrafo = document.createElement('li');
+                  document.getElementById("lista").removeChild(document.getElementById("lista").lastChild)
+               }
+
+                function replaceFirst(texto){
+                  var item = document.createElement('li');
+                  item.innerHTML=texto
+                  document.getElementById("lista").replaceChild(item,document.getElementById("lista").firstChild)
+               }
+               function replaceLast(texto){
+                  var item = document.createElement('li');
+                  item.innerHTML=texto
+                  document.getElementById("lista").replaceChild(item,document.getElementById("lista").lastChild)
+               }   
+               
+        }
+        </script>
+     </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+ <html lange="en">
+     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>NO CAMPOS EN BLANCO</title>
+     </head>
+     
+     <body>
+        <p id="txt"> Introduce tu nombre <input type="text">
+        <div class="error"></div> 
+        <p id="txt"> Introduce tu apellido <input type="text"><br/>
+        <div class="error"></div> 
+        <p id="txt"> Introduce tu edad <input type="text"><br/>
+        <div class="error"></div> 
+        <p id="txt"> Introduce tu contraseña <input type="text"><br/>
+        <div class="error"></div>
+        <input type="button" value="Saludar" id="boton">
+        <p id="cambio"></p>  
+        
+        <script>
+            document.getElementById('boton').addEventListener('click',enBlanco,false);
+            
+            function enBlanco(){
+                for(i=0;i<document.getElementsByTagName('input').length-1;i++){
+                    if(document.getElementsByTagName('input')[i].value==""){
+                        document.getElementsByClassName('error')[i].innerHTML="Este campo está vacio"
+                        document.getElementsByClassName('error')[i].style.color="red"
+                        //document.getElementById('cambio')[i].innerHTML=" Hay algun campo vacio"
+                       
+                    }
+
+                }
+            }
+        </script>
+     </body>
+</html>

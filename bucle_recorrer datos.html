@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+ <html lange="en">
+     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>bucle notas</title>
+     </head>    
+     
+     <body>
+        <script>
+            cont=0
+            med=0
+            let notas =[]
+            
+            while(cont!=6){
+                num = parseInt(window.prompt("Introduce una nota"))
+                if(num<0||num>10){
+                    alert("Introduce una nota correcta")
+                }
+                else{
+                   notas.push(num)
+                    document.writeln("Nota "+(cont+1)+": "+num+"<br/>")  
+                    med=num+med
+                    cont++
+                }
+            }
+       
+        med=med/6
+        document.writeln("Nota media: "+med)
+        document.writeln(nota(med))
+
+        function nota(med){
+            if(med>9) v=" SOBRESALIENTE"
+            else if (med>=7&&med<9) v="NOTABLE"
+            else if (med>=5&&med<7) v="APROBADO"
+            else v="SUSPENSO"
+           return v; 
+        }
+                
+        </script>
+    </body>
+</html>

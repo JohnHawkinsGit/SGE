@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+ <html lange="en">
+     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Archivo de prueba</title>
+     </head>
+     
+     <body>
+         
+         <script>
+          nombre =window.prompt("dime tu nombre")
+           var notas =new Array()
+          for (i=0;i<5;i++){
+             notas.push(parseInt(prompt(nombre +" introduce tu nota" +(i+1))))
+             //notas[i]=parseInt(window.prompt("Introduce la nota "+(1+i))
+          }
+          total=0
+          for (i=0;i<5;i++){
+            total+=notas[i]
+          }
+          document.writeln("tu media es "+ total/5)
+         </script>
+     </body>
+</html>

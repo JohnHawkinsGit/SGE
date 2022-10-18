@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+ <html lange="en">
+     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>NO CAMPOS EN BLANCO 2</title>
+     </head>
+     
+     <body>
+        <p id="txt"> Introduce tu nombre <input type="text">
+        <div class="error"></div> 
+        <p id="txt"> Introduce tu apellido <input type="text"><br/>
+        <div class="error"></div> 
+        <p id="txt"> Introduce tu edad <input type="text"><br/>
+        <div class="error"></div> 
+        <p id="txt"> Introduce tu contraseña <input type="text"><br/>
+        <div class="error"></div>
+        <select name="sexo">
+            <option value="-">-</option> 
+            <option value="M">M</option> 
+            <option value="H">H</option> 
+            <option value="NS/NC">NS/NC</option> 
+        </select>
+        <div class="error"></div>
+        <input type="checkbox"> He leído y acepto el contrato
+        <div id="cookie"></div>
+        <input type="button" value="Saludar" id="boton">
+        <script>
+            document.getElementById('boton').addEventListener('click',enBlanco,false);
+            
+            function enBlanco(){
+                
+                let inp=document.getElementsByTagName('input')
+                let err= document.getElementsByClassName('error')
+               // valida los campos de texto
+               for(i=0;i<inp.length-1;i++){
+                    if(inp[i].value==""){
+                        err[i].innerHTML="Este campo está vacio"
+                        err[i].style.color="red"
+                    }
+                }
+                //valida select
+                if(document.getElementsByName('sexo')[0].value=="-"){
+                    err[err.length-1].innerHTML="No has seleccionado una opción"
+                    err[err.length-1].style.color="red"
+                }
+
+                //valida checkbox
+                var isChecked=inp[inp.length-2].checked
+                if(!isChecked){
+                            document.getElementById('cookie').innerHTML="No marcaste la casilla"
+                            document.getElementById('cookie').style.color="red"
+                        }  
+            }
+        </script>
+     </body>
+</html>

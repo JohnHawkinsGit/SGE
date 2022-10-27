@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+ <html lange="en">
+     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PCCOMPONENTES</title>
+     </head>
+     
+     <body>
+        
+        <button type="button" id="idiES"><img src="es.png" height ="50px" width="60px"></button>
+        <button type="button" id="idiEN"><img src="en.jpg"  height ="50px" width="60px" ></button>    
+        <h1 id="titulo">Crear cuenta</h1>
+        <input type="button" value="Entrar con google" id="boton">
+        <hr> </hr>
+        <p id="registro">O bien</p>
+        <input type="text" id="nombre" placeholder="Nombre"><br><br>
+        <input type="text"  id="email" placeholder="Correo Electrónico"><br><br>
+        <input type="text" id="contraseña" placeholder="Contraseña"><br><br>
+        <input type="text" id="repetir" placeholder="Repetir Contraseña"><br><br>
+        <input type="checkbox" id="privacidad"><span id=sPrivacidad>He leído y acepto la política de privacidad</span> <br>
+        <input type="checkbox" id="suscripcion"><span id=sSuscripccion>Recibir descuentos exclusivos, novedades y tendencias por e-mail. Me puedo dar de baja desde mi panel</span><br><br>
+        <input type="button" value="Crear cuenta" id="crear" style=background-color:orange><br>
+       
+        <hr> </hr>
+        <p id="yaTengo">Ya tengo cuenta</p>
+        <input type="button" value="Iniciar sesión" id="iniciar">
+
+        <script>
+            idioma=window.navigator.language
+            if(idioma=="es-ES"){
+                document.getElementById("titulo").innerHTML="Crear cuenta"
+                    document.getElementById("google").value="Entrar con Google"
+                    document.getElementById("registro").innerHTML="O bien"
+                    document.getElementById("nombre").placeholder="Nombre"
+                    document.getElementById("email").placeholder="Correo Electrónico"
+                    document.getElementById("contraseña").placeholder="Contraseña"
+                    document.getElementById("repetir").placeholder="Repetir Contraseña"
+                    document.getElementById("sPrivacidad").innerHTML="He leído y acepto la política de privacidad"
+                    document.getElementById("sSuscripccion").innerHTML="Recibir descuentos exclusivos, novedades y tendencias por e-mail. Me puedo dar de baja desde mi panel"
+                    document.getElementById("crear").value="Crear cuenta"
+                    document.getElementById("yaTengo").innerHTML="Ya tengo cuenta"
+                    document.getElementById("iniciar").value="Iniciar sesión"
+
+            }
+            if(idioma=="en-US"){
+                document.getElementById("titulo").innerHTML="Create account"
+                    document.getElementById("google").value="Enter with Google"
+                    document.getElementById("registro").innerHTML="Or"
+                    document.getElementById("nombre").placeholder="Name"
+                    document.getElementById("email").placeholder="EMAIL"
+                    document.getElementById("contraseña").placeholder="Password"
+                    document.getElementById("repetir").placeholder="Repeat password"
+                    document.getElementById("sPrivacidad").innerHTML="I accept terms and conditions"
+                    document.getElementById("sSuscripccion").innerHTML="I wish to recive exclusive discounts, news...."
+                    document.getElementById("crear").value="Create account"
+                    document.getElementById("yaTengo").innerHTML="I have an account"
+                    document.getElementById("iniciar").value="Log in"
+            }
+        </script>
+     </body>
+</html>

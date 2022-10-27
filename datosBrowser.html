@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+ <html lange="en">
+     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MODIFICAR BROWSER</title>
+     </head>
+     
+     <body>
+
+        <p id="idioma"></p>
+        <p id="navegador"></p>
+        <p id="SO"></p>
+        <p id="tipo"></p>
+
+       
+        <input type="button" value="OBTENER DATOS" id="boton">
+        
+        <script>
+            document.getElementById('boton').addEventListener('click',datos,false);
+            function datos(){
+                document.getElementById('idioma').innerHTML=window.navigator.language
+                document.getElementById('navegador').innerHTML=window.navigator.userAgent
+                document.getElementById('SO').innerHTML=navigator.appVersion
+                document.getElementById('tipo').innerHTML=window.navigator.platform
+              
+            }
+
+        </script>
+     </body>
+</html>

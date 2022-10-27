@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+ <html lange="en">
+     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MODIFICAR BROWSER</title>
+     </head>
+     
+     <body>
+
+        <p id="x"> X  <input type="text" id="tx"></p>
+        <p id="y"> Y<input type="text" id="ty"></p>
+        <input type="radio" name="opciones" id="aumentar"> Resize x2
+        <input type="radio" name="opciones" id="mover"> Move x2
+        <input type="button" value="Go!" id="boton">
+        
+        <script>
+            document.getElementById('boton').addEventListener('click',modificar,false);
+            let myWindow
+            let width=document.getElementById("tx").value
+            let height=document.getElementById("ty").value
+            myWindow= window.open("","", "width=200, height=100")
+            function modificar(){
+                switch(document.querySelector('input[name="opciones"]:checked').id){
+                  case "aumentar":
+                     myWindow.resizeTo(width,height)
+                  break;
+
+                  case "mover":
+                    myWindow.moveTo(width,height)
+                  break;
+                }
+            }
+
+        </script>
+     </body>
+</html>

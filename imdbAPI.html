@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMDB</title>
+</head>
+<body>
+    <input type="text" id="titulo"></input>
+    <input type="button" id="buscar" value="Buscar"></input> <br><br>
+    <span id="tit"></span>   <span id="nota"></span> <br>
+    <img id="foto"  width="350" height="500">
+    
+
+<script>
+    //se crea variable para almacenar id de pelicula
+    let id;
+    //se crea evento para activar método cuando se pulse boton
+    document.getElementById("buscar").addEventListener("click",()=>buscar(),false);
+
+    //se crea método
+    function buscar(){
+        //se crea variable para almacenar la URL con el titulo introducido en el buscador
+        let busqueda="https://imdb8.p.rapidapi.com/auto-complete?q="+document.getElementById("titulo").value;
+        //se usa api para obtener el titulo y poster
+    fetch(busqueda, {
+        'method': 'GET',
+        'headers': {
+            'X-RapidAPI-Host': 'imdb8.p.rapidapi.com',
+	        'X-RapidAPI-Key': '53725e9040msh329eb43a26cf294p1cc6cajsn1212a02a916d'
+        }
+    })    
+    .then(response=>response.json())
+	.then(data =>{
+        console.log(data) 
+        const list=data.d;
+        console.log(list);
+        document.getElementById("tit").innerHTML=list[0].l,
+        document.getElementById("foto").src=list[0].i.imageUrl,
+        id=list[0].id,
+        console.log(id);
+        })
+    .catch(err => {console.error(err);
+    });
+    
+}
+    
+
+
+</script>
+</script>
+</body>
+</html>

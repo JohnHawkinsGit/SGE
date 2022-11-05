@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funciones Flecha</title>
+</head>
+<body>
+    <input type="text" name="" id=""> Nombre<br>
+    <input type="text" name="" id=""> Edad<br>
+    <input type="text" name="" id=""> Equipo de futbol<br>
+    <input type="button" value="Saludo" id="saludo"> <!--saludo con nombre--><br>
+    <input type="button" value="Edad" id="edad"> <!--edad en 2030--><br>
+    <input type="button" value="Equipo" id="equipo"><!--saludo y equipo de futbol-->
+    <script>
+       var nom=document.getElementsByTagName("input")[0];
+       var old=document.getElementsByTagName("input")[1];
+       var equip=document.getElementsByTagName("input")[2];
+       var años=8;
+       document.getElementById("saludo").addEventListener("click",()=>alert("Hola "+nom.value),false);
+       document.getElementById("edad").addEventListener("click",()=>alert(parseInt(old.value)+años),false);
+       document.getElementById("equipo").addEventListener("click",()=>alert("Hola "+nom.value+" Equipo: "+equip.value),false);  
+    </script>
+</body>
+</html>

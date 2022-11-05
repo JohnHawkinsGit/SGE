@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch API</title>
+</head>
+<body>
+   Pokemón Inicial
+   <select name="pokemon">
+    <option value="gengar">Gengar</option> 
+    <option value="cubone">Cubone</option> 
+    <option value="arcanine">Arcanine</option> 
+    <option value="gyarados">Gyarados</option> 
+</select>
+    <input type="button" id="go" value="GO!"> <br>
+    Nombre
+    <div id="nombre"></div> <br>
+    Habilidades
+    <div id="habilidades"></div> <br>
+    Stats
+    <div id="stats"></div> <br>
+    Tipo
+    <div id="tipo"></div>
+
+    <script>
+        habi=[];
+        stat=[];
+       
+        document.getElementById("go").addEventListener("click",()=>rellenar(),false);
+        
+        function rellenar(){
+            let enlace='https://pokeapi.co/api/v2/pokemon/'+document.getElementsByName('pokemon')[0].value;
+            
+            fetch(enlace)
+            .then((response) => response.json())
+            .then((data) => {
+                document.getElementById("nombre").innerHTML=data.name,
+                   tipo(data),
+                   habilidad(data),console.log(data),
+                   estadisticas(data)   
+                }
+            )       
+        }
+
+        function habilidad(data){
+            let habi=[];
+           for(i=0;i<data.abilities.length;i++){
+                habi[i]=" "+data.abilities[i].ability.name;
+           }
+           document.getElementById("habilidades").innerHTML=habi.toString();
+        }
+
+        function estadisticas(data){
+            let stat=[];
+           for(i=0;i<data.stats.length;i++){
+                stat[i]=" "+data.stats[i].stat.name+":"+data.stats[i].base_stat;
+           }
+           document.getElementById("stats").innerHTML=stat.toString();
+        }
+
+
+        function tipo(data){
+            let tip=[];
+           for(i=0;i<data.types.length;i++){
+                tip[i]=" "+data.types[i].type.name;
+           }
+           document.getElementById("tipo").innerHTML=tip.toString();
+        }
+     </script>
+</body>
+</html>

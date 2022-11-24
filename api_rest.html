@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGE API REST</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+    <center>
+        <h1>Practica API REST</h1>
+        <hr class="border border-primary border-3 opacity-75">
+        <table  id="tabla" style="width:25%">
+            <tr>
+                <th>
+                    <span>Id</span>
+                </th>
+                <th> 
+                    <span>Nombre</span>
+                </th>
+                <th>
+                    <span>Sueldo</span>
+                </th>
+            </tr>
+            
+        </table>
+
+        <h3>Inserta un nuevo empleado</h1>
+        
+        <table border="1px" width="50px" id="tNuevo" style="width:25%" class="table   table-info">
+            <tr width="10px">
+                <td>
+                    <p vertical-align="middle">Id</p>
+                </td>
+                <td>
+                    <input type="text" id="iId"> 
+                </td>
+            </tr>   
+            <tr width="10px">
+                <td>
+                    <p vertical-align="middle" id="pong">Nombre</p>
+                </td>
+                <td>
+                    <input type="text" id="iNombre"> 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Salario</p>
+                </td>
+                <td>
+                    <input type="text" id="iSalary"> 
+                </td>
+            </tr>
+        </table>
+        <button type="button" id="add" class="btn btn-outline-success">ADD</button>
+        <button type="button" id="edit" class="btn btn-outline-warning">EDIT</button>
+        <button type="button" id="del" class="btn btn-outline-danger">DELL</button><br>
+        <button type="button" id="id" class="btn btn-outline-dark" style="margin-top: 5px" >SHOW_By_ID</button>
+        <button type="button" id="all" class="btn btn-outline-dark" style="margin-top: 5px">SHOW ALL</button>
+    
+    </center>
+</body>
+<script>
+    crearTabla();
+    function crearTabla(){
+    const cors ='https://cors-anywhere.herokuapp.com/'
+    const yourUrl =cors+'https://nodejs-mysql-restapi-production-d8bd.up.railway.app/api/employees';
+    fetch(yourUrl)
+    .then(response=>response.json())
+	.then(data =>{console.log(data)
+         //se crean las filas
+         for (var i = 0; i <data.length; i++) {
+         var linea = document.createElement("tr")
+         //se crean las columnas
+            var celda = document.createElement("td");
+            var txtCelda = document.createTextNode(data[i].id);
+            celda.appendChild(txtCelda);
+            linea.appendChild(celda);
+            var celda = document.createElement("td");
+            var txtCelda = document.createTextNode(data[i].name);
+            celda.appendChild(txtCelda);
+            linea.appendChild(celda);
+            var celda = document.createElement("td");
+            var txtCelda = document.createTextNode(data[i].salary);
+            celda.appendChild(txtCelda);
+            linea.appendChild(celda);
+         // agrega la hilera al final de la tabla (al final del elemento table)
+         document.getElementById("tabla").appendChild(linea);
+        }
+        document.getElementById("tabla").className="table table-primary";
+    })
+    .catch(err=>console.log(err));
+}
+    //AÑADIR
+    document.getElementById("add").addEventListener("click",add,false);
+    function add(){
+        continuar=true;
+        var nombre=document.getElementById("iNombre").value; 
+        var salar=document.getElementById("iSalary").value;
+        
+        if(nombre==""||salar==""){
+            window.alert("Hay algún campo vacio")
+            continuar=false
+        }
+        if(nombre<5||nombre>40){
+            window.alert("El nombre debe tener entre 5 y 40 carácteres")
+            continuar=false
+        }
+        if(salar<0||salar>9999){
+            window.alert("El salario debe ser entre 0 y 9999")
+            continuar=false
+        }
+        if(continuar){ 
+            const datos={
+                name:nombre,
+                salary:salar
+            }
+            const cors ='https://cors-anywhere.herokuapp.com/'
+            const yourUrl =cors+'https://nodejs-mysql-restapi-production-d8bd.up.railway.app/api/employees';
+           
+            fetch(yourUrl, {method:'POST', body: JSON.stringify(datos), headers:{'Content-Type': 'application/json'}})
+            .then((response)=>response.json())
+            .then((data) =>{
+                console.log('enviando ' +datos)
+            })
+            .catch(err=>console.log(err));
+        }
+    }
+    
+    //EDITAR
+    document.getElementById("edit").addEventListener("click",modificar,false);
+    function modificar(){
+      
+        var id = document.getElementById("iId").value;
+        var nombre = document.getElementById("iNombre").value;
+        var salar = document.getElementById("iSalary").value;
+            const data ={
+                name:nombre,
+                salary:salar
+            }
+        const cors ='https://cors-anywhere.herokuapp.com/'
+        const yourUrl =cors+'https://nodejs-mysql-restapi-production-d8bd.up.railway.app/api/employees/';
+        fetch(yourUrl+id, {method:'PATCH', body: JSON.stringify(data), headers:{'Content-Type': 'application/json'}})
+        .then(response => response.json())
+        .then(datos => console.log(datos));
+
+        
+    }
+
+    //BORRAR
+    document.getElementById("del").addEventListener("click",borra,false);
+    function borra(){
+        var id = document.getElementById("iId").value;
+        const cors ='https://cors-anywhere.herokuapp.com/'
+        const yourUrl =cors+'https://nodejs-mysql-restapi-production-d8bd.up.railway.app/api/employees/';
+        fetch(yourUrl+id,{method:'DELETE'})
+                .then(response => response.json())
+                .then(datos => (datos));
+
+    }
+    //MOSTRAR POR ID
+    document.getElementById("id").addEventListener("click",muestraID,false);
+    function muestraID(){
+        var verId = window.prompt("Introduce id: ")
+        const cors ='https://cors-anywhere.herokuapp.com/'
+        const yourUrl =cors+'https://nodejs-mysql-restapi-production-d8bd.up.railway.app/api/employees/';
+        fetch(yourUrl+verId)
+            .then(response => response.json())
+            .then(data =>{console.log("Id: "+data.id+" Nombre: "+ data.name+" Salario: "+data.salary)
+          ,window.alert("Id: "+data.id+" Nombre: "+ data.name+" Salario: "+data.salary)
+    });  
+    }
+    //MOSTRAR TODOS
+    document.getElementById("all").addEventListener("click",muestraAll,false);
+    function muestraAll(){
+        location.reload();       
+}
+</script>
+</body>
+</html>
